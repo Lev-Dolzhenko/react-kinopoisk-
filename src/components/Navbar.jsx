@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import logotype from "./../content/navbar/kinopoiskLogo.svg";
 import searchIcon from "./../content/navbar/searchIcon.svg";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   return (
@@ -11,8 +12,12 @@ export const Navbar = () => {
         </div>
         <nav>
           <ul className="flex items-center gap-x-10 text-xl font-bold">
-            <li className="text-white opacity-[0.6]">Главная</li>
-            <li className="text-white opacity-[0.6]">Мое</li>
+            <li className="text-white opacity-[0.6]">
+              <Link to="/">Главная</Link>
+            </li>
+            <li className="text-white opacity-[0.6]">
+              <Link to="/collection">Мое</Link>
+            </li>
             <li className="opacity-[0.6] flex items-center gap-x-4">
               <img className="w-7 h-7" src={searchIcon} alt="searchIcon" />
               <input className="rounded opacity-[0.6]" type="text"></input>
@@ -20,7 +25,9 @@ export const Navbar = () => {
           </ul>
         </nav>
         <div>
-          <div className="w-10 h-10 bg-white rounded-full opacity-[0.5]"></div>
+          <Link to="/account">
+            <div className="w-10 h-10 bg-white rounded-full opacity-[0.5]"></div>
+          </Link>
         </div>
       </div>
     </div>
