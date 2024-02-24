@@ -3,7 +3,6 @@ import playIcon from "./../content/main/playIcon.svg";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 export const Main = ({ film }) => {
-  console.log(film);
   return (
     <div className="w-full h-[550px] lg:h-[100vh]">
       <div className="absolute w-full h-[550px] lg:h-[100vh] bg-gradient-to-r from-black"></div>
@@ -21,14 +20,14 @@ export const Main = ({ film }) => {
             </p>
           </div>
           <div className="flex gap-5">
-            <button className="text-white rounded bg-orange-500 font-bold flex items-center justify-center p-3 gap-x-2">
+            <button className="text-white rounded bg-orange-500 font-bold flex items-center justify-center p-3 gap-x-2 hover:bg-orange-600 transition-colors">
               <img className="w-7 h-7" src={playIcon} alt="playIcon" />
-              Смотреть сериал
+              Смотреть
             </button>
-            <button className="bg-gray-700 font-bold text-white p-3 rounded">
+            <button className="bg-gray-700 font-bold text-white p-3 rounded hover:bg-gray-800 transition-colors">
               О сериале
             </button>
-            <button className="bg-gray-700 h-[52px] w-[52px] rounded-full flex items-center justify-center text-white text-2xl">
+            <button className="bg-gray-700 h-[52px] w-[52px] rounded-full flex items-center justify-center text-white text-2xl hover:bg-gray-800 transition-colors">
                 <AiOutlineHeart />
             </button>
           </div>

@@ -16,3 +16,9 @@ body {
 .customContainer {
   @apply max-w-[1430px] px-[15px] mx-auto;
 }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  @apply hidden
+}
+

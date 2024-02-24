@@ -12,10 +12,10 @@ export const Navbar = () => {
         </div>
         <nav>
           <ul className="flex items-center gap-x-10 text-xl font-bold">
-            <li className="text-white opacity-[0.6]">
+            <li className="text-white opacity-[0.6] hover:opacity-100 transition-opacity">
               <Link to="/">Главная</Link>
             </li>
-            <li className="text-white opacity-[0.6]">
+            <li className="text-white opacity-[0.6] hover:opacity-100 transition-opacity">
               <Link to="/collection">Мое</Link>
             </li>
             <li className="opacity-[0.6] flex items-center gap-x-4">
