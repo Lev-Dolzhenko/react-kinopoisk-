@@ -33,7 +33,7 @@ export const Row = ({ films, category, rowId }) => {
       <div className="relative flex items-center scroll group">
         <BsChevronLeft
           onClick={slideLeft}
-          className="bg-white left-0 rounded-full absolute opacity-0 hover:opacity-100 p-1 cursor-pointer z-10 group-hover:opacity-100 transition-opacity"
+          className="bg-white left-0 rounded-full absolute opacity-0 hover:opacity-100 p-1 cursor-pointer z-30 group-hover:opacity-100 transition-opacity"
           size={40}
         />
         <div
@@ -52,7 +52,7 @@ export const Row = ({ films, category, rowId }) => {
         </div>
         <BsChevronRight
           onClick={slideRight}
-          className="bg-white right-0 rounded-full absolute opacity-0 p-1 cursor-pointer z-10 group-hover:opacity-100 transition-opacity hover:opacity-100"
+          className="bg-white right-0 rounded-full absolute opacity-0 p-1 cursor-pointer z-30 group-hover:opacity-100 transition-opacity hover:opacity-100"
           size={40}
         />
       </div>
