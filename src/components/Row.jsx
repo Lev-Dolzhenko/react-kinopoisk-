@@ -13,7 +13,7 @@ export const Row = ({ films, category, rowId }) => {
     }
   }, [films, category]);
 
-  console.log(currFilms[0]);
+  // console.log(currFilms[0]);
 
   const slideLeft = () => {
     const slider = document.getElementById("slider" + rowId);
@@ -33,7 +33,7 @@ export const Row = ({ films, category, rowId }) => {
       <div className="relative flex items-center scroll group">
         <BsChevronLeft
           onClick={slideLeft}
-          className="bg-white left-0 rounded-full absolute opacity-0 hover:opacity-100 p-1 cursor-pointer z-10 group-hover:opacity-100 transition-opacity"
+          className="bg-white left-0 rounded-full absolute opacity-0 hover:opacity-100 p-1 cursor-pointer z-30 group-hover:opacity-100 transition-opacity"
           size={40}
         />
         <div
@@ -41,7 +41,10 @@ export const Row = ({ films, category, rowId }) => {
           className="w-full h-full overflow-y-hidden overflow-x-scroll whitespace-nowrap scroll-smooth no-scrollbar"
         >
           {currFilms.map((currFilm) => (
-            <div className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] relative inline-block cursor-pointer p-2 hover:z-10">
+            <div
+              key={currFilm.id}
+              className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] relative inline-block cursor-pointer p-2 hover:z-10"
+            >
               <img
                 className="rounded hover:scale-110 hover:shadow-[0_0_50px_50px_rgba(0,0,0,1)] transition-transform"
                 src={currFilm?.poster.url}
@@ -52,7 +55,7 @@ export const Row = ({ films, category, rowId }) => {
         </div>
         <BsChevronRight
           onClick={slideRight}
-          className="bg-white right-0 rounded-full absolute opacity-0 p-1 cursor-pointer z-10 group-hover:opacity-100 transition-opacity hover:opacity-100"
+          className="bg-white right-0 rounded-full absolute opacity-0 p-1 cursor-pointer z-30 group-hover:opacity-100 transition-opacity hover:opacity-100"
           size={40}
         />
       </div>
