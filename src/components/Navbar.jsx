@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   return (
-    <div className="customContainer py-6 absolute top-0 z-10 w-full left-[50%] translate-x-[-50%]">
+    <div className="customContainer py-6 absolute top-0 z-10 w-full">
       <div className="flex items-center justify-between">
         <div>
           <img className="w-80" src={logotype} alt="kinopoisk" />
