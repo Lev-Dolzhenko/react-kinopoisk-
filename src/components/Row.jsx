@@ -1,8 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
+import { CiHeart } from "react-icons/ci";
+import { FaHeart } from "react-icons/fa";
+import { UserAuth } from "../context/AuthContext";
+import { db } from "../firebase";
+import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 
 export const Row = ({ films, category, rowId }) => {
   const [currFilms, setCurrFilms] = useState([]);
+  const [saved, setSaved] = useState(false);
+  const [like, setLike] = useState(false);
+  const { user } = UserAuth();
+  const [likes, setLikes] = useState({});
+
+  const movieId = doc(db, "users", `${user?.email}`);
+
+  const saveShow = async (item) => {
+    if (user?.email) {
+      setLikes((prevLikes) => ({
+        ...prevLikes,
+        [item.id]: !prevLikes[item.id],
+      }));
+      setSaved(true);
+      await updateDoc(movieId, {
+        savedShows: arrayUnion({
+          id: item.id,
+          name: item.name,
+        }),
+      });
+    } else {
+      alert("Пожалуйста авторизуйтесь, чтобы сохранить фильм");
+    }
+  };
 
   useEffect(() => {
     if (films.docs) {
@@ -13,7 +42,7 @@ export const Row = ({ films, category, rowId }) => {
     }
   }, [films, category]);
 
-  // console.log(currFilms[0]);
+  console.log(currFilms[0]);
 
   const slideLeft = () => {
     const slider = document.getElementById("slider" + rowId);
@@ -43,10 +72,18 @@ export const Row = ({ films, category, rowId }) => {
           {currFilms.map((currFilm) => (
             <div
               key={currFilm.id}
-              className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] relative inline-block cursor-pointer p-2 hover:z-10"
+              className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] relative inline-block cursor-pointer p-2 hover:z-10 hover:shadow-[0_0_50px_50px_rgba(0,0,0,1)]"
             >
+              <div onClick={() => saveShow(currFilm)}>
+                {likes[currFilm.id] ? (
+                  <FaHeart className="absolute bg-black/70 rounded-full text-white left-4 top-4 w-[30px] h-[30px] hover:scale-110" />
+                ) : (
+                  <CiHeart className="absolute bg-black/70 rounded-full text-white left-4 top-4 w-[30px] h-[30px] hover:scale-110" />
+                )}
+              </div>
+
               <img
-                className="rounded hover:scale-110 hover:shadow-[0_0_50px_50px_rgba(0,0,0,1)] transition-transform"
+                className="rounded  transition-transform"
                 src={currFilm?.poster.url}
                 alt={currFilms?.id}
               />
