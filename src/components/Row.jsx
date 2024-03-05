@@ -26,6 +26,7 @@ export const Row = ({ films, category, rowId }) => {
         savedShows: arrayUnion({
           id: item.id,
           name: item.name,
+          poster: item.poster.url,
         }),
       });
     } else {
@@ -76,9 +77,13 @@ export const Row = ({ films, category, rowId }) => {
             >
               <div onClick={() => saveShow(currFilm)}>
                 {likes[currFilm.id] ? (
-                  <FaHeart className="absolute bg-black/70 rounded-full text-white left-4 top-4 w-[30px] h-[30px] hover:scale-110" />
+                  <div className="absolute left-4 top-4 w-[40px] h-[40px] bg-black/70 flex items-center justify-center rounded-full">
+                    <FaHeart className="w-[30px]  text-white  hover:scale-110" />
+                  </div>
                 ) : (
-                  <CiHeart className="absolute bg-black/70 rounded-full text-white left-4 top-4 w-[30px] h-[30px] hover:scale-110" />
+                  <div className="absolute left-4 top-4 w-[40px] h-[40px] bg-black/70 flex items-center justify-center rounded-full">
+                    <CiHeart className="w-[30px]  text-white  hover:scale-110" />
+                  </div>
                 )}
               </div>
 

@@ -1,7 +1,10 @@
-import React from 'react'
+import React from "react";
+import SavedShows from "../components/SavedShows";
 
 export const Collection = () => {
   return (
-    <div>Collection</div>
-  )
-}
+    <div className="mt-[300px]">
+      <SavedShows />
+    </div>
+  );
+};
