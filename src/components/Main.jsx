@@ -12,7 +12,7 @@ export const Main = ({ film }) => {
           src={film?.backdrop.url}
           alt={film?.id}
         />
-        <di v className="absolute top-[40%] left-[1%]">
+        <div className="absolute top-[40%] left-[1%]">
           <img className="w-[400px] mb-4" src={film?.logo.url} alt="" />
           <div className="max-w-[40%] mb-3">
             <p className="text-white font-bold text-[22px] opacity-[0.6]">
@@ -31,7 +31,7 @@ export const Main = ({ film }) => {
                 <AiOutlineHeart />
             </button>
           </div>
-        </di>
+        </div>
       </div>
     </div>
   );

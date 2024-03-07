@@ -7,7 +7,7 @@ import axios from "axios";
 const SearchList = ({ isShow, setIsShow }) => {
   const [films, setFilms] = useState([]);
   const [searchVal, setSearchVal] = useState("");
-  console.log(films);
+  // console.log(films);
   const url =
     "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=20&selectFields=id&selectFields=name&selectFields=description&selectFields=shortDescription&selectFields=type&selectFields=year&selectFields=rating&selectFields=ageRating&selectFields=movieLength&selectFields=genres&selectFields=poster&selectFields=backdrop&selectFields=logo&selectFields=persons&selectFields=premiere&selectFields=similarMovies&selectFields=top10&selectFields=top250&sortField=&sortType=1&type=movie&lists=top250";
   const headers = {
@@ -22,7 +22,7 @@ const SearchList = ({ isShow, setIsShow }) => {
     }
   },[isShow]);
 
-  console.log(searchVal);
+  // console.log(searchVal);
 
   const closeShow = () => {
     setIsShow(false);
@@ -33,7 +33,7 @@ const SearchList = ({ isShow, setIsShow }) => {
       .get(url, { headers })
       .then((response) => {
         setFilms(response.data.docs);
-        console.log(response.data.docs);
+        // console.log(response.data.docs);
       })
       .catch((error) => {
         console.error("Ошибка при загрузке данных:", error.response?.data);
@@ -71,7 +71,8 @@ const SearchList = ({ isShow, setIsShow }) => {
               }
             })
             .map((film) => (
-              <li className="text-white flex items-center gap-x-4 cursor-pointer">
+              <li 
+              key={film.id} className="text-white flex items-center gap-x-4 cursor-pointer">
                 <img
                   className="w-[100px]"
                   src={film?.poster.url}

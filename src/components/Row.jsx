@@ -5,6 +5,7 @@ import { FaHeart } from "react-icons/fa";
 import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { Link } from "react-router-dom";
 
 export const Row = ({ films, category, rowId }) => {
   const [currFilms, setCurrFilms] = useState([]);
@@ -71,28 +72,30 @@ export const Row = ({ films, category, rowId }) => {
           className="w-full h-full overflow-y-hidden overflow-x-scroll whitespace-nowrap scroll-smooth no-scrollbar"
         >
           {currFilms.map((currFilm) => (
-            <div
-              key={currFilm.id}
-              className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] relative inline-block cursor-pointer p-2 hover:z-10 hover:shadow-[0_0_50px_50px_rgba(0,0,0,1)]"
-            >
-              <div onClick={() => saveShow(currFilm)}>
-                {likes[currFilm.id] ? (
-                  <div className="absolute left-4 top-4 w-[40px] h-[40px] bg-black/70 flex items-center justify-center rounded-full">
-                    <FaHeart className="w-[30px]  text-white  hover:scale-110" />
-                  </div>
-                ) : (
-                  <div className="absolute left-4 top-4 w-[40px] h-[40px] bg-black/70 flex items-center justify-center rounded-full">
-                    <CiHeart className="w-[30px]  text-white  hover:scale-110" />
-                  </div>
-                )}
-              </div>
+            <Link to={`/film/${currFilm?.id}`}>
+              <div
+                key={currFilm.id}
+                className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] relative inline-block cursor-pointer p-2 hover:z-10 hover:shadow-[0_0_50px_50px_rgba(0,0,0,1)]"
+              >
+                <div onClick={() => saveShow(currFilm)}>
+                  {likes[currFilm.id] ? (
+                    <div className="absolute left-4 top-4 w-[40px] h-[40px] bg-black/70 flex items-center justify-center rounded-full">
+                      <FaHeart className="w-[30px]  text-white  hover:scale-110" />
+                    </div>
+                  ) : (
+                    <div className="absolute left-4 top-4 w-[40px] h-[40px] bg-black/70 flex items-center justify-center rounded-full">
+                      <CiHeart className="w-[30px]  text-white  hover:scale-110" />
+                    </div>
+                  )}
+                </div>
 
-              <img
-                className="rounded  transition-transform"
-                src={currFilm?.poster.url}
-                alt={currFilms?.id}
-              />
-            </div>
+                <img
+                  className="rounded  transition-transform"
+                  src={currFilm?.poster.url}
+                  alt={currFilms?.id}
+                />
+              </div>
+            </Link>
           ))}
         </div>
         <BsChevronRight
