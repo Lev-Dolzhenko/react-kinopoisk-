@@ -3,8 +3,15 @@ import logotype from "./../content/navbar/kinopoiskLogo.svg";
 import searchIcon from "./../content/navbar/searchIcon.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
+import SearchList from "./SearchList";
 
 export const Navbar = () => {
+  const [isShow, setIsShow] = useState(false);
+
+  const showSearchList = () => {
+    setIsShow(true)
+  };
+
   const { user, logOut } = UserAuth();
   // console.log(user.email)
   const navigate = useNavigate();
@@ -33,9 +40,9 @@ export const Navbar = () => {
             <li className="text-white opacity-[0.6] hover:opacity-100 transition-opacity">
               <Link to="/collection">Мое</Link>
             </li>
-            <li className="opacity-[0.6] flex items-center gap-x-4">
-              <img className="w-7 h-7" src={searchIcon} alt="searchIcon" />
-              <input className="rounded opacity-[0.6]" type="text"></input>
+            <li onClick={showSearchList} className="opacity-[0.6] flex items-center gap-x-4">
+              <img className="w-7 h-7 cursor-pointer" src={searchIcon} alt="searchIcon" />
+              {/* <input className="rounded opacity-[0.6]" type="text"></input> */}
             </li>
           </ul>
         </nav>
@@ -61,6 +68,7 @@ export const Navbar = () => {
           </div>
         )}
       </div>
+      <SearchList isShow={isShow} setIsShow={setIsShow}/>
     </div>
   );
 };

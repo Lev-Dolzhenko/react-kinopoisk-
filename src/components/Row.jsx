@@ -43,7 +43,7 @@ export const Row = ({ films, category, rowId }) => {
     }
   }, [films, category]);
 
-  console.log(currFilms[0]);
+  // console.log(currFilms[0]);
 
   const slideLeft = () => {
     const slider = document.getElementById("slider" + rowId);
