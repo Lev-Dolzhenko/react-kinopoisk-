@@ -25,8 +25,11 @@ const Actors = ({ persons }) => {
           id="sliderActors"
           className="w-full h-full gap-x-5 flex overflow-y-hidden overflow-x-scroll whitespace-nowrap scroll-smooth no-scrollbar"
         >
-          {persons?.map((person) => (
-            <li className="flex-shrink-0 cursor-pointer relative">
+          {persons?.map((person, index) => (
+            <li
+              key={person?.name + index}
+              className="flex-shrink-0 cursor-pointer relative"
+            >
               <img className="h-full w-[200px]" src={person?.photo} alt="/" />
               <div className="absolute left-0 bottom-0 w-full h-full opacity-0 bg-black/60 flex flex-col items-center justify-center hover:opacity-100 transition-opacity">
                 <strong className="text-white text-xl text-wrap text-center">

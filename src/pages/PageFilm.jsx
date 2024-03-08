@@ -15,6 +15,14 @@ const PageFilm = () => {
   const [genres, setGenres] = useState([]);
   const [countries, setCountries] = useState([]);
 
+  const truncateString = (str, num) => {
+    if (str?.length > num) {
+      return str.slice(0, num) + "...";
+    } else {
+      return str;
+    }
+  };
+
   useEffect(() => {
     axios
       .get(url, { headers })
@@ -45,17 +53,21 @@ const PageFilm = () => {
 
   return (
     <>
-      <div className="w-full h-[550px] lg:h-[100vh] text-white/60">
-        <div className="absolute w-full h-[550px] lg:h-[100vh] bg-gradient-to-r from-black"></div>
+      <div className="w-full h-[800px] lg:h-[100vh] text-white/60">
+        <div className="absolute w-full h-[800px] lg:h-[100vh] bg-gradient-to-r from-black"></div>
         <div className="w-full h-full">
           <img
             className="w-full h-full object-cover"
             src={film?.backdrop?.url}
             alt={film?.id}
           />
-          <div className="absolute top-[30%] left-[1%]">
-            <img className="w-[400px] mb-4" src={film?.logo?.url} alt="" />
-            <ul className="text-xs font-semibold flex items-center gap-x-[10px]">
+          <div className="absolute top-[20%] left-[1%] customContainer">
+            <img
+              className="w-[300px] mb-4 lg:w-[400px]"
+              src={film?.logo?.url}
+              alt=""
+            />
+            <ul className="text-xs font-semibold flex items-center gap-x-[10px] mb-4 flex-wrap gap-y-1">
               <li className="psevdoAfter">{film?.rating?.imdb}</li>
               <>
                 {genres.map((genre) => (
@@ -76,12 +88,12 @@ const PageFilm = () => {
                 ))}
               </>
             </ul>
-            <div className="max-w-[40%] mb-3">
-              <p className="text-white font-medium text-[20px] opacity-[0.6]">
-                {film?.description}
+            <div className="max-w-[100%] mb-5">
+              <p className="text-white font-medium text-[16px] opacity-[0.6] lg:text-[22px]">
+                {truncateString(film?.description, 300)}
               </p>
             </div>
-            <div className="flex gap-5">
+            <div className="flex flex-col gap-5 sm:flex-row">
               <button className="text-white rounded bg-orange-500 font-bold flex items-center justify-center p-3 gap-x-2 hover:bg-orange-600 transition-colors">
                 <img className="w-7 h-7" src={playIcon} alt="playIcon" />
                 Смотреть

@@ -21,7 +21,7 @@ const Signup = () => {
 
   return (
     <>
-      <div className="fixed left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] py-4 px-4 w-[100%] max-w-[450px] border border-orange-600 rounded">
+      <div className="fixed left-[50%] customContainer translate-x-[-50%] top-[50%] translate-y-[-50%] py-4 px-4 w-[100%] max-w-[450px] border border-orange-600 rounded">
         <div className="flex flex-col">
           <h1 className="text-white text-3xl font-bold mb-[40px]">
             Регистрация
@@ -44,7 +44,7 @@ const Signup = () => {
             <button className="text-white rounded bg-orange-500 font-bold flex items-center justify-center p-3 gap-x-2 hover:bg-orange-600 transition-colors mt-[30px]">
               Регистрация
             </button>
-            <div className="flex justify-between mt-[20px] text-sm text-gray-600">
+            <div className="flex flex-col gap-y-3 mt-[20px] text-sm  text-gray-600 md:flex-row justify-between">
               <p>
                 <input id="remember" className="mr-2" type="checkbox" />
                 <label htmlFor="remember">
@@ -53,7 +53,7 @@ const Signup = () => {
               </p>
               <p>Нужная помощь?</p>
             </div>
-            <p className="py-8 text-white">
+            <p className="py-3 text-white">
               <span className="text-gray-600">Уже есть аккаунт? </span>
               <Link to="/login">Войти</Link>
             </p>

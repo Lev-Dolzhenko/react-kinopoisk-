@@ -29,15 +29,15 @@ const SavedShows = () => {
   };
 
   return (
-    <div className="ml-4 text-white">
+    <div className="ml-4 text-white customContainer">
       <h2 className="font-bold text-4xl text-white first-letter:uppercase mb-10">
         Сохраненные
       </h2>
-      <ul className="grid grid-cols-6 gap-4">
+      <ul className="grid grid-cols-1 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
         {movies.length > 0 &&
           movies.map((movie) => (
             <li
-              className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] relative cursor-pointer hover:scale-110 transition-transform hover:z-10"
+              className="w-[250px] sm:w-[200px] md:w-[180px] lg:w-[200px] xl:w-[250px] 2xl:w-[300px] justify-self-center relative cursor-pointer hover:scale-110 transition-transform hover:z-10"
               key={movie.id}
             >
               <img src={movie?.poster} />

@@ -58,7 +58,7 @@ export const Row = ({ films, category, rowId }) => {
 
   return (
     <div className="mt-5 ml-4">
-      <h2 className="font-bold text-4xl text-white first-letter:uppercase mb-2">
+      <h2 className="font-bold text-2xl text-white first-letter:uppercase mb-2 sm:text-4xl">
         {category}
       </h2>
       <div className="relative flex items-center scroll group">

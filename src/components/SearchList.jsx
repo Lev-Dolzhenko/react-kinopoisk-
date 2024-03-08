@@ -41,9 +41,9 @@ const SearchList = ({ isShow, setIsShow }) => {
   }, [url]);
   return (
     <div
-      className={`fixed left-[50%] top-[40%] translate-x-[-50%] translate-y-[-50%] w-[600px] h-[500px] bg-black/70 rounded py-5 px-2 ${
+      className={`fixed left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] w-[300px] h-[500px] bg-black/90 rounded py-5 px-2 ${
         isShow ? "block" : "hidden"
-      }`}
+      } md:w-[600px]`}
     >
       <div className="flex  justify-between">
         <strong className="text-orange-500">Найди свой любимый фильм</strong>
