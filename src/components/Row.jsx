@@ -72,7 +72,7 @@ export const Row = ({ films, category, rowId }) => {
           className="w-full h-full overflow-y-hidden overflow-x-scroll whitespace-nowrap scroll-smooth no-scrollbar"
         >
           {currFilms.map((currFilm) => (
-            <Link to={`/film/${currFilm?.id}`}>
+            <Link key={currFilm.id} to={`/film/${currFilm?.id}`}>
               <div
                 key={currFilm.id}
                 className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] relative inline-block cursor-pointer p-2 hover:z-10 hover:shadow-[0_0_50px_50px_rgba(0,0,0,1)]"

@@ -6,14 +6,18 @@ import { useState } from "react";
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [gender, setGender] = useState("");
+  const [date, setDate] = useState("");
   const { user, signUp } = UserAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await signUp(email, password);
-      navigate('/')
+      await signUp(email, password, name, gender, date);
+      console.log(date);
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
@@ -21,7 +25,7 @@ const Signup = () => {
 
   return (
     <>
-      <div className="fixed left-[50%] customContainer translate-x-[-50%] top-[50%] translate-y-[-50%] py-4 px-4 w-[100%] max-w-[450px] border border-orange-600 rounded">
+      <div className="fixed left-[50%] customContainer translate-x-[-50%] top-[50%] translate-y-[-50%] py-4 px-4  border border-orange-600 rounded">
         <div className="flex flex-col">
           <h1 className="text-white text-3xl font-bold mb-[40px]">
             Регистрация
@@ -41,6 +45,44 @@ const Signup = () => {
               placeholder="Password"
               autoComplete="current-password"
             />
+            <input
+              type="text"
+              onChange={(e) => setName(e.target.value)}
+              className="p-3 my-2 bg-gray-700 rounded"
+              placeholder="Name"
+            />
+            <div className="flex items-center gap-x-2">
+              <div>
+                <label htmlFor="genderMan">М</label>
+                <input
+                  onChange={(e) => setGender(e.target.value)}
+                  name="gender"
+                  id="genderMan"
+                  type="radio"
+                  value="male"
+                />
+              </div>
+              <div>
+                <label htmlFor="genderWomen">Ж</label>
+                <input
+                  onChange={(e) => setGender(e.target.value)}
+                  name="gender"
+                  id="genderWomen"
+                  type="radio"
+                  value="female"
+                />
+              </div>
+            </div>
+            <label className="mb-1" for="birthdate">
+              Дата рождения:
+            </label>
+            <input
+              className="text-black"
+              type="date"
+              id="birthdate"
+              name="birthdate"
+              onChange={(e) => setDate(e.target.value)}
+            ></input>
             <button className="text-white rounded bg-orange-500 font-bold flex items-center justify-center p-3 gap-x-2 hover:bg-orange-600 transition-colors mt-[30px]">
               Регистрация
             </button>

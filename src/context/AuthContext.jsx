@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { auth, db } from "../firebase";
+import { updateProfile } from "firebase/auth";
 
 import {
   createUserWithEmailAndPassword,
@@ -13,11 +14,21 @@ const AuthContext = createContext();
 export function AuthContextProvider({ children }) {
   const [user, setUser] = useState({});
 
-  function signUp(email, password) {
-    createUserWithEmailAndPassword(auth, email, password);
-    return setDoc(doc(db, "users", email), {
-      savedShows: [],
-    });
+  function signUp(email, password, personName, personGender, datePerson) {
+    createUserWithEmailAndPassword(auth, email, password).then(
+      (userCredential) => {
+        const user = userCredential.user;
+        updateProfile(user, {
+          name: personName,
+        }); // Обновляем профиль пользователя, добавляя имя
+        return setDoc(doc(db, "users", email), {
+          savedShows: [],
+          name: personName, // Добавляем имя пользователя в документ пользователя
+          gender: personGender,
+          date: datePerson,
+        });
+      }
+    );
   }
 
   function logIn(email, password) {
