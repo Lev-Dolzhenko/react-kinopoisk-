@@ -3,6 +3,7 @@ import { Main } from "./../components/Main";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Row } from "../components/Row";
+import MobileManu from "../components/MobileManu";
 
 export const Home = () => {
   const [films, setFilms] = useState([]);

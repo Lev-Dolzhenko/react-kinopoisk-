@@ -1,13 +1,21 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { IoIosCloseCircle } from "react-icons/io";
+import { useLocation } from "react-router-dom";
 
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const SearchList = ({ isShow, setIsShow }) => {
   const [films, setFilms] = useState([]);
   const [searchVal, setSearchVal] = useState("");
-  // console.log(films);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    setIsShow(false); // При изменении пути, автоматически скрываем компонент
+  }, [location.pathname]);
+
   const url =
     "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=20&selectFields=id&selectFields=name&selectFields=description&selectFields=shortDescription&selectFields=type&selectFields=year&selectFields=rating&selectFields=ageRating&selectFields=movieLength&selectFields=genres&selectFields=poster&selectFields=backdrop&selectFields=logo&selectFields=persons&selectFields=premiere&selectFields=similarMovies&selectFields=top10&selectFields=top250&sortField=&sortType=1&type=movie&lists=top250";
   const headers = {
@@ -20,7 +28,7 @@ const SearchList = ({ isShow, setIsShow }) => {
     } else {
       document.body.style.overflow = "visible";
     }
-  },[isShow]);
+  }, [isShow]);
 
   // console.log(searchVal);
 
@@ -71,15 +79,16 @@ const SearchList = ({ isShow, setIsShow }) => {
               }
             })
             .map((film) => (
-              <li 
-              key={film.id} className="text-white flex items-center gap-x-4 cursor-pointer">
-                <img
-                  className="w-[100px]"
-                  src={film?.poster.url}
-                  alt={film?.id}
-                />
-                <span className="text-2xl">{film?.name}</span>
-              </li>
+              <Link key={film.id} to={`/film/${film?.id}`}>
+                <li className="text-white flex items-center gap-x-4 cursor-pointer">
+                  <img
+                    className="w-[100px]"
+                    src={film?.poster.url}
+                    alt={film?.id}
+                  />
+                  <span className="text-2xl">{film?.name}</span>
+                </li>
+              </Link>
             ))}
         </ul>
       </div>
