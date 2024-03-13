@@ -25,7 +25,7 @@ const Signup = () => {
 
   return (
     <>
-      <div className="fixed left-[50%] customContainer translate-x-[-50%] top-[50%] translate-y-[-50%] py-4 px-4  border border-orange-600 rounded">
+      <div className="fixed left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] py-4 px-4 w-[100%]  border border-orange-600 rounded md:max-w-[450px]">
         <div className="flex flex-col">
           <h1 className="text-white text-3xl font-bold mb-[40px]">
             Регистрация
